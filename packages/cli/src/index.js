@@ -66,6 +66,7 @@ program
   )
   .option('--icon', 'use "1em" as width and height')
   .option('--typescript', 'transform svg into typescript')
+  .option('--named-export', 'use named exports instead default exports')
   .option('--native', 'add react-native support with react-native-svg')
   .option('--memo', 'add React.memo into the result component')
   .option('--ref', 'forward ref to SVG root element')

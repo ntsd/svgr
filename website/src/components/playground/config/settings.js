@@ -32,6 +32,13 @@ export const settings = [
     default: false,
   },
   {
+    label: 'Named Export',
+    name: 'namedExport',
+    type: 'boolean',
+    group: 'global',
+    default: false,
+  },
+  {
     label: 'Ref',
     name: 'ref',
     type: 'boolean',

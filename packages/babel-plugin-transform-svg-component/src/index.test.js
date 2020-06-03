@@ -115,6 +115,16 @@ describe('plugin', () => {
       })
     })
 
+    describe('with "namedExport" option', () => {
+      it('use named export instead default export', () => {
+        const { code } = testPlugin(language)('<svg><g /></svg>', {
+          state: { componentName: 'SvgComponent' },
+          namedExport: true,
+        })
+        expect(code).toMatchSnapshot()
+      })
+    })
+
     describe('custom templates', () => {
       it('support basic template', () => {
         const { code } = testPlugin(language)('<svg><g /></svg>', {

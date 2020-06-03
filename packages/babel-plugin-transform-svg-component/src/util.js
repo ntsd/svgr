@@ -197,7 +197,7 @@ export const getExport = ({ template }, opts) => {
   }
 
   if (opts.ref) {
-    const nextExportName = `ForwardRef`
+    const nextExportName = `${ opts.namedExport ? exportName : '' }ForwardRef`
     result += `const ${nextExportName} = React.forwardRef(${exportName})\n\n`
     exportName = nextExportName
   }
@@ -211,12 +211,12 @@ export const getExport = ({ template }, opts) => {
   if (opts.state.caller && opts.state.caller.previousExport) {
     result += `${opts.state.caller.previousExport}\n`
     result += `export { ${exportName} as ReactComponent }`
-    return template.ast(result, {
-      plugins,
-    })
+  } else if (opts.namedExport) {
+    result += `export { ${exportName} as ReactComponent }`
+  } else {
+    result += `export default ${exportName}`
   }
 
-  result += `export default ${exportName}`
   return template.ast(result, {
     plugins,
   })
